@@ -22,19 +22,31 @@ var tecla = "";
 var anteriorTecla = "";
 
 //la librería que encontré que permite registrar y reaccionar al presionado de teclas.
-
 var readline = require('readline');
 readline.emitKeypressEvents(process.stdin);
-process.stdin.setRawMode(true);
+//process.stdin.setRawMode(true); <- supuestamente esto es necesario para que me deje obtener input sin usar enter (o es solo para strings)
+//como sea, lo dejo comentado por si hay que recuperarlo pero no parece que lo necesite.
+
 
 function tomaInput() {
   process.stdin.on('keypress', (ch, key) => {
     if (key && key.name == 'return') {
       process.stdin.pause();
     }
+    if (key && key.name == 'backspace') {
+      // Esta parte simula para el usuario la experienca de estar "borrando" dentro de la interfase (ver más abajo)
+      console.clear()
+      let borraUnCaracter = mensaje.slice(0, -1);
+      mensaje = borraUnCaracter;
+      console.log(mensaje);
+    } else {
+    // Limpia pantalla, suma al string e imprime. La idea es producir la sensación de una especie de interfase en vivo como la de una pantalla de celular.
+    console.clear()
     mensaje += ch;
     console.log(mensaje);
     return ch;
+    }
+    
   });
 }
 

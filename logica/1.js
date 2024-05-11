@@ -21,27 +21,24 @@
 // {car: 'y', veces: 2}
 
 
-//Modificar Esta Variable con la cadena de texto a Analizar
-var stringARevisar = ("Hoy ya es día 10");
-
 const creaYOrdenaArray = stringAConvertir => {
   //Ordenamiento alfanumérico previo a la construcción de objetos
-  var arrayDeChars = stringAConvertir.split('');
+  let arrayDeChars = stringAConvertir.split('');
   arrayDeChars.sort();
   return arrayDeChars;
 }
 
 const frecuenciaCaracter = arrayOrdenado => {
   //Crea una lista
-  var chars = [];
+  let chars = [];
   //Y por cada elemento del array de chars
-  for (var i=0; i<arrayOrdenado.length;i++)
+  for (let i=0; i<arrayOrdenado.length;i++)
     {
       //Descarta los espacios porque en el ejemplo estaban descartados (para volver a incluirlos, eliminar este condicional y listo)
       if (arrayOrdenado[i] != " ")
         {
           //crea un objeto con  1) la propiedad  car y le asigno valor del char, y 2) propiedad numérica cant, asigndo 1.
-          var newChar = {car : arrayOrdenado[i], veces: 1}
+          let newChar = {car : arrayOrdenado[i], veces: 1}
       
           //Luego, si no hay ya un objeto en la lista con la misma propiedad "car", pusheo 
           if (!chars.some(e => e.car === arrayOrdenado[i]))
@@ -51,7 +48,7 @@ const frecuenciaCaracter = arrayOrdenado => {
           //Caso contrario en el elemento en cuestión sumo 1 unidad a pripiedad cant
           else
             {
-              var objIndex = chars.findIndex(e => e.car == arrayOrdenado[i]);
+              let objIndex = chars.findIndex(e => e.car == arrayOrdenado[i]);
               chars[objIndex].veces ++;
             }
         }
@@ -61,8 +58,14 @@ const frecuenciaCaracter = arrayOrdenado => {
   return [chars]
 }
 
-var arrayDeChars = creaYOrdenaArray(stringARevisar.toLocaleLowerCase());
-var arrayOrdenado = frecuenciaCaracter(arrayDeChars);
-console.log(arrayOrdenado)
+const contarCar = stringARevisar => {
+  let arrayDeChars = creaYOrdenaArray(stringARevisar.toLocaleLowerCase());
+  let arrayOrdenado = frecuenciaCaracter(arrayDeChars);
+  console.log(arrayOrdenado)
+  
+}
+
+contarCar("Hoy ya es día 10");
+
 
 
