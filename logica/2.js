@@ -14,22 +14,29 @@
 
 
 
-var mensaje = "";
-var traducido = "";
-
-var repeticionesMismaTecla = 0;
+const reg = new RegExp('^[0-9]');
+const a =" 0|.?!1|ABC2|DEF3|GHI4|JKL5|MNO6|PQRS7|TUV8|WXYZ9".split("|")
+let mensaje = "";
+let cantidadVecesTecla = 0;
 var tecla = "";
-var anteriorTecla = "";
+let anteriorTecla = "no";
+let enUna = false;
+let extUna = 0;
+let timer = 0;
+let fusa = false;
 
 //la librería que encontré que permite registrar y reaccionar al presionado de teclas.
 var readline = require('readline');
 readline.emitKeypressEvents(process.stdin);
-//process.stdin.setRawMode(true); <- supuestamente esto es necesario para que me deje obtener input sin usar enter (o es solo para strings)
-//como sea, lo dejo comentado por si hay que recuperarlo pero no parece que lo necesite.
 
+/* When in raw mode, input is always available character-by-character, not including modifiers.
+ Additionally, all special processing of characters by the terminal is disabled, including echoing input
+ characters. Ctrl+C will no longer cause a SIGINT when in this mode.*/
+process.stdin.setRawMode(true); 
 
 function tomaInput() {
   process.stdin.on('keypress', (ch, key) => {
+        
     if (key && key.name == 'return') {
       process.stdin.pause();
     }
@@ -38,57 +45,130 @@ function tomaInput() {
       console.clear()
       let borraUnCaracter = mensaje.slice(0, -1);
       mensaje = borraUnCaracter;
-      console.log(mensaje);
+      console.log("\n\n\n\t"+mensaje);
     } else {
     // Limpia pantalla, suma al string e imprime. La idea es producir la sensación de una especie de interfase en vivo como la de una pantalla de celular.
-    console.clear()
-    mensaje += ch;
-    console.log(mensaje);
-    return ch;
-    }
     
+    reg.test(ch) ? (
+      console.clear(),
+      traducido = traduce(ch),
+      mensaje += traducido,
+      console.log("\n\n\n\t"+mensaje),
+      fusa? (null) : (
+        fusa = true,
+        setTimeout(() => {fusaOut()}, 1500)
+        )
+      )
+      :
+      (null)
+    }
+    return mensaje; //para qué voy a usar el return?
   });
 }
 
-tomaInput();
-
-
-
-
-function revisaRepeticiones() {
-    if (repeticionesMismaTecla == 1) {
-      return 1; // el usuario no ingresó más teclas
-    } else if (repeticionesMismaTecla == 2) {
-      return 2; //si esto vuelve en el primer input, es break. pero si vuelve en el segundo, no es nada.
-    }
-      else if (repeticionesMismaTecla == 3) {
-        return 3; //si esto vuelve en el segundo input, es break. ¿en el tercero? tambien ¿no?
-    } else {
-      console.log("el revisar de repeticiones está devolviendo algo que no corresponde, revisar")
-    }
+const fusaOut = () => {
+  /* extUna y timer controlan tanto este timer como el interno cuando ya está corriendo una tecla
+  ver más abajo en const traduce = (aTraducir) */
+  if (extUna > timer) {
+    setTimeout(() => {fusaOut()}, 1500)
+  } else {
+    fusa = false;
   }
+}
+
+const traduce = (aTraducir) => {
+  let traducido = "";
+
+  /*anteriortecla y atraducir: para verififcar si está repitiendo tecla chequeo contra el valor input y no contra el traducido
+  sino, siempre tendría un delay de 1 proceso.
+  fusa: no inicia este proceso si corrió suficiente tiempo*/
+
+  if (fusa && anteriorTecla === aTraducir) {
+
+    enUna ? (
+      //console.log("seguís en una"), debugger
+      extUna = timer+1
+      //console.log(timer+" "+extUna) debugger
+      //setTimeout(() => {salirDeUna()}, 2000) debugger
+    ) : (
+      //console.log("estás en una"), debugger
+      enUna = true,
+      extUna = timer,
+      setTimeout(() => {salirDeUna()}, 1000)
+    )
+
+    const salirDeUna = () => {
+      if (extUna > timer) {
+        extUna = timer;
+        //console.log(timer+" "+extUna) debugger
+        setTimeout(() => {salirDeUna()}, 1000)
+      } else {
+        enUna = false;
+      }
+    }
+
+    cantidadVecesTecla === a[aTraducir].length -1 ? (
+      cantidadVecesTecla = 0
+    ) : (
+      cantidadVecesTecla ++
+    );
+  } else {
+    //console.log("ya no estás en una"); debugger
+    cantidadVecesTecla = 0;
+  }
+
+  traducido = a[aTraducir].charAt(cantidadVecesTecla);
+  anteriorTecla = aTraducir; 
+  
+  return traducido
+}
+
+/* function salirDeUna() {
+  if (extUna > timer){
+    console.log("no saliendo??")
+    extUna = timer;
+    setTimeout(salirDeUna, 1500)
+    } else {
+    console.log("saliendo?");
+    enUna = false;
+    }   
+} */
  
 async function inputTimer(tiempo) {
   await setTimeout(() => {
     console.log(revisaRepeticiones());
     }, tiempo)}
 
+function revisaRepeticiones() {
+    if (cantidadVecesTecla === 1) {
+      return 1; // el usuario no ingresó más teclas
+    } else if (cantidadVecesTecla === 2) {
+      return 2; //si esto vuelve en el primer input, es break. pero si vuelve en el segundo, no es nada.
+    }
+      else if (cantidadVecesTecla === 3) {
+        return 3; //si esto vuelve en el segundo input, es break. ¿en el tercero? tambien ¿no?
+    } else {
+      console.log("el revisar de repeticiones está devolviendo algo que no corresponde, revisar")
+    }
+  }
+
+
 //inputTimer(1500); <- para el primer y segundo caso
 //inputTimer(500); <- para tercer caso
 
 
+tomaInput();
 
-//->imprime "ingrese mensaje para terminar enter"*/
+
+
+
 
 
 
 
 /*function tomaInput() {
   var tecla = prompt('Ingrese mensaje, presione la tecla /"enter/" para terminar: ');        
-  console.log(`${tecla}`);}*/
-
-  /*while (tecla  Enter*/
-
+ 
 
 //tomaInput();
 
