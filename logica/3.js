@@ -23,7 +23,7 @@
   finalmente calcular cuantos elementos en cada fila cumplen con la condicion de
   a= ser un 0 b= tener un 1 a a izq y c = tener un 1 a la derecha*/
 
-  let arrayDeBloquesVertical = [4, 0, 3, 6, 1, 3];
+  const arrayDeBloquesVertical = [4, 0, 3, 6, 1, 3];
   let aguas = 0;
 
   const cantidadDeFilas = Math.max(...arrayDeBloquesVertical); //6
@@ -40,21 +40,15 @@
       filas.unshift(crearColumna(iteracion));
       iteracion ++;
     }    
-    let imagenBonita = filas.join("\n ");
-    let imagenMasBonita = imagenBonita.replace(/,/g, " ").replace(/1/g, "■").replace(/0/g, "□");
-    console.log("\n\n "+imagenMasBonita);
-
-    let mensaje = `\nQuedan ${aguas} bloques de agua atrapados`
-    
-    return mensaje
+    const imagenBonita = filas.join("\n ").replace(/,/g, " ").replace(/1/g, "■").replace(/0/g, "□");
+    console.log("\n\n "+imagenBonita);
   }
 
   /* toma el array de números original para crear una fila "binaria" según haya ceros o no
      para esto construye un array al que le disminuye cada dígito según el Nº de iteración
      en que se encuentre.  */ 
   function crearColumna(numIteracion) {
-    let filaIteracion = arrayDeBloquesVertical;
-    let filaDisminuida = filaIteracion.map(v => v-numIteracion)
+    let filaDisminuida = arrayDeBloquesVertical.map(v => v-numIteracion)
     let fila = [];
 
     filaDisminuida.forEach((digito) => {
@@ -94,9 +88,14 @@
     return fila;
   } 
 
+const comunicaMensaje = () => {
+  let mensaje = `\nQuedan ${aguas} bloques de agua atrapados`
+  return mensaje
+}
+
 const waterBlocks = value => {
-    mensaje = crearFilas();
-    console.log(mensaje)
+    crearFilas();
+    console.log(comunicaMensaje())
   return
 }
 
