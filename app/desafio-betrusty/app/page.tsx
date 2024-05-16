@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Header from "./dashboard/header/page";
 
 export default function Home() {
   return (
@@ -7,10 +7,8 @@ export default function Home() {
         {/*wrapper general*/}
         <div className="flex-col justify-between  bg-primario">
         
-          
-          
-          {/*header*/}
-          <div className="h-20 bg-black"></div>
+        <Header></Header>
+
           {/*property header*/}
           <div className="h-20 bg-primario"></div>
           {/*carousel*/}

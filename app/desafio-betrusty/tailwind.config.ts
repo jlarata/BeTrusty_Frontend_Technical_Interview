@@ -23,9 +23,9 @@ const config: Config = {
       {
         priceOwnerH: '356px'
       },
-        grosor:
+        offs:
       {
-        unpx: '1px'
+        of8: '0.8px'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

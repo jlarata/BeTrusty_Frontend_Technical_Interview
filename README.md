@@ -1,3 +1,10 @@
+# Información adicional sobre este repositorio:
+
+El plazo para la exposición de este repositorio era hasta el miércoles 15 de mayo. Lamentablemente no pude finalizar y entregar la parte de "maquetación". 
+Quería dejar eso asentado. Continuaré maquetando este desafío puesto que me interesa y me sirve la práctica. 
+Ariel Wasserman
+
+
 # BeTrusty Frontend Technical Interview
 
 En este repositorio, se encuentra la prueba técnica para el puesto de Frontend Developer en BeTrusty.
