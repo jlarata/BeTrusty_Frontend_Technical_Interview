@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const colors = require('tailwindcss/colors');
 
 const config: Config = {
   content: [
@@ -8,6 +9,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors:
+        {
+          primario: '#0F172A',
+          secundario: '#33EAFF'
+        },
+      fontFamily:
+       {
+        roboto: ['Roboto'],
+        poppins: ['Poppins']
+      },
+      height:
+      {
+        priceOwnerH: '356px'
+      },
+        grosor:
+      {
+        unpx: '1px'
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
