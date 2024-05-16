@@ -13,6 +13,11 @@
  */
 
 
+/* ACLARACIÓN SOBRE ESTA RESOLUCIÓN:
+  Comprendo que el desafío consistía en hacer un split(-) del input y luego chocar eso contra un diccionario, pero me
+  pareció que sería interesante intentar recrear con el mayor nivel de detalle posible la experiencia que teníamos con 
+  los T9 los que llegamos a disfrutarlos y sufrirlos. Este de aquí abajo es el resultado. */
+
 
 const reg = new RegExp('^[0-9]');
 const a =" 0|.,?!1|ABC2Á|DEF3É|GHI4Í|JKL5|MNO6Ó|PQRS7|TUV8Ú|WXYZ9".split("|")
