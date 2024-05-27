@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Header from "./header/page";
+import Carr from "./carr/page";
 
 export default function Dashboard() {
   return (
@@ -40,7 +41,9 @@ export default function Dashboard() {
             
           </div>
           {/*carousel*/}
-          <div className="h-52 bg-white"></div>
+          
+            <Carr/>
+          
 
           {/*wrapper price & button*/}
           <div className="mt-7 mx-8">
