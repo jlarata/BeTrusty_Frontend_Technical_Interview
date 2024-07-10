@@ -1,8 +1,10 @@
-# Información adicional sobre este repositorio:
+## Información adicional sobre este repositorio:
 
-El plazo para la exposición de este repositorio era hasta el miércoles 15 de mayo. Lamentablemente no pude finalizar y entregar la parte de "maquetación". 
+```
+El plazo para la exposición de este repositorio era hasta el miércoles 15 de mayo. Lamentablemente no pude finalizar y entregar la parte de "maquetación".
 Quería dejar eso asentado. Continuaré maquetando este desafío puesto que me interesa y me sirve la práctica. 
 Ariel Wasserman
+```
 
 
 # BeTrusty Frontend Technical Interview

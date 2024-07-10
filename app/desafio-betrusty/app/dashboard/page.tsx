@@ -2,6 +2,7 @@ import Image from "next/image";
 import Header from "./header/page";
 import Carr from "./carr/page";
 import DateAndPrice from "./dateandprice/page";
+import Specifications from "./specifications/page";
 
 export default function Dashboard() {
   return (
@@ -49,50 +50,10 @@ export default function Dashboard() {
           <DateAndPrice/> 
                    
           {/*características*/}
-          <div className="mt-7 mx-8 border-white rounded-lg text-white font-poppins font-light">
-            {/*c/una*/}
-            <div className="flex items-center">
-              {/*text*/}
-              <div className="">avenida siempreviva 1234, san juan, argentina</div>
-            </div>
-            {/*hero icon*/}
-            <div className="w-14 h-14 "></div>
-             {/*c/una*/}
-             <div className="flex items-center">
-              {/*hero icon*/}
-              <div className="w-14 h-14 "></div>
-              {/*text*/}
-              <div className="">fetch 2</div>
-            </div>
-            {/*c/una*/}
-            <div className="flex items-center">
-              {/*hero icon*/}
-              <div className="w-14 h-14 "></div>
-              {/*text*/}
-              <div className="">fetch 3</div>
-            </div>
-            {/*c/una*/}
-            <div className="flex items-center">
-              {/*hero icon*/}
-              <div className="w-14 h-14 "></div>
-              {/*text*/}
-              <div className="">fetch 4</div>
-            </div>
-            {/*c/una*/}
-            <div className="flex items-center">
-              {/*hero icon*/}
-              <div className="w-14 h-14 "></div>
-              {/*text*/}
-              <div className="">fetch 5</div>
-            </div>
-            {/*c/una*/}
-            <div className="flex items-center">
-              {/*hero icon*/}
-              <div className="w-14 h-14 "></div>
-              {/*text*/}
-              <div className="">fetch 6</div>
-            </div>  
+          <Specifications/>
           
+
+          <div className="mt-7 mx-8 border-white rounded-lg text-white text-sm font-roboto font-light">
              {/*descr-caja*/}
             <div className=" flex-col mt-7 text-white font-poppins font-light">
               {/*descr-titulo*/}
@@ -101,7 +62,9 @@ export default function Dashboard() {
               <div className="mt-6">Este hermoso apartamento de 2 habitaciones se encuentra en el corazón de la ciudad, a solo unos pasos de los mejores restaurantes, tiendas y lugares de interés turístico. El apartamento es ideal para aquellos que buscan un espacio cómodo y acogedor en el que relajarse después de un largo día de trabajo o de turismo.
               </div>
             </div>
+          </div>
 
+          <div className="mt-7 pb-7 mx-8 border-white rounded-lg text-white text-sm font-roboto font-light">
             {/*propietario-caja*/}
             <div className=" flex-col mt-7 text-white font-poppins font-light">
               {/*propietario-titulo*/}
@@ -119,14 +82,17 @@ export default function Dashboard() {
               <div className="ml-2">Fetch (join on id...)</div>
               </div>
             </div>
+            </div>
+
+            
           </div>
 
           {/*footer*/}
-          <footer className="sticky top-[100vh] h-20 bg-black mt-11"></footer>
+          <footer className="sticky h-20 bg-black"></footer>
 
         </div>
         
-      </div>
+
       
    
   );
