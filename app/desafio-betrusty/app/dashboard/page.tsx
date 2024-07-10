@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Header from "./header/page";
 import Carr from "./carr/page";
+import DateAndPrice from "./dateandprice/page";
 
 export default function Dashboard() {
   return (
@@ -42,16 +43,11 @@ export default function Dashboard() {
           </div>
           {/*carousel*/}
           
-            <Carr/>
-          
-
+          <Carr/>
+            
           {/*wrapper price & button*/}
-          <div className="mt-7 mx-8">
-            {/*price owner*/}
-            <div className="h-priceOwnerH border-x border-y border-white rounded-lg bg-primario"></div>
-            <div className="h-9 bg-secundario text-primario mt-7 font-roboto rounded-full flex items-center justify-center">Invitar Inquilino</div>
-          </div>
-          
+          <DateAndPrice/> 
+                   
           {/*características*/}
           <div className="mt-7 mx-8 border-white rounded-lg text-white font-poppins font-light">
             {/*c/una*/}
